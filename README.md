@@ -1,7 +1,11 @@
 # export2excel
 js导出excel封装工具，支持多层表头，已验证单层和双层三层，理论上支持更多。
 
+对xlsx.js进行封装，极其简便的纯前端js导出excel，只需要一个表头字段映射对象和数据数组即可。
+不支持背景色等功能，尝试过，但是因为xlsx.js高级功能需要付费就放弃了。需要的可以下载源码研究一下。
+
 # 使用方法：
+使用时，只需要引入min.js文件，然后使用window.export2Excel.export_json_to_excel即可。
 
 表头层级根据fieldMap的对象层级决定
 ```javascript
