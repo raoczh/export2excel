@@ -2,6 +2,9 @@
 js导出excel封装工具，支持多层表头，已验证单层和双层三层，理论上支持更多。
 
 # 使用方法：
+需要引入xlsx和xlsx-style
+
+表头层级根据fieldMap的对象层级决定
 ```javascript
 var fieldMap = {
     '字段1': 'field1', '字段2': 'field2',
