@@ -2,7 +2,6 @@
 js导出excel封装工具，支持多层表头，已验证单层和双层三层，理论上支持更多。
 
 # 使用方法：
-需要引入xlsx和xlsx-style
 
 表头层级根据fieldMap的对象层级决定
 ```javascript
@@ -23,7 +22,7 @@ var tableData=[
 ]
 var callback = () =>{}
 
-export2Excel && export2Excel.export_json_to_excel({ fieldMap, sourceData: tableData, filename: '导出数据' }, callback)
+window.export2Excel && window.export2Excel.export_json_to_excel({ fieldMap, sourceData: tableData, filename: '导出数据' }, callback)
 ```
 
 
