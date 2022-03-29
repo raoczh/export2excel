@@ -159,13 +159,13 @@ function calTitleLevel (obj, fields) {
 
 function formatJson (filterVal, jsonData) {
   return jsonData.map(v =>
-    filterVal.map(j => {
-      if (j === "timestamp") {
-        return parseTime(v[j]);
-      } else {
-        return v[j];
-      }
-    })
+      filterVal.map(j => {
+        if (j === "timestamp") {
+          return parseTime(v[j]);
+        } else {
+          return v[j];
+        }
+      })
   );
 }
 
@@ -178,11 +178,11 @@ function exportBlob (blob, fileName) {
     a.href = url;
     a.download = fileName;
     a.dispatchEvent(
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        view: window
-      })
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        })
     );
     window.URL.revokeObjectURL(blob);
   }
@@ -276,7 +276,7 @@ function calMerges (fieldMap, multiHeader, header, level) {
           if (curLevel == num) {
             var inx = multiHeader[num].indexOf(key)
             var blankNum = 0
-            if (num != multiHeader.length - 1) {
+            if (num != multiHeader.length - 1 || multiHeader.length == 1) {
               for (var i = inx + 1; i < multiHeader[num].length; i++) {
                 if (multiHeader[num][i] === '') {
                   blankNum++
@@ -320,7 +320,7 @@ function export_table_to_excel (id) {
   var ws_name = "SheetJS";
 
   var wb = new Workbook(),
-    ws = sheet_from_array_of_arrays(data);
+      ws = sheet_from_array_of_arrays(data);
 
   /* add ranges to worksheet */
   // ws['!cols'] = ['apple', 'banan'];
@@ -342,13 +342,13 @@ function export_table_to_excel (id) {
 }
 
 function export_json_to_excel ({
-  fieldMap = {},
-  sourceData = [],
-  filename,
-  autoWidth = true,
-  bookType = 'xlsx'
-} = {},
-  callback) {
+                                 fieldMap = {},
+                                 sourceData = [],
+                                 filename,
+                                 autoWidth = true,
+                                 bookType = 'xlsx'
+                               } = {},
+                               callback) {
   var fields = []
   var titleLevel = calTitleLevel(fieldMap, fields)
 
@@ -366,7 +366,7 @@ function export_json_to_excel ({
 
   var data = formatJson(fields, sourceData)
   var merges = calMerges(fieldMap, multiHeader, header, titleLevel)
-    
+
   /* original data */
   filename = filename || 'excel-list'
   data = [...data]
@@ -377,7 +377,7 @@ function export_json_to_excel ({
 
   var ws_name = "SheetJS";
   var wb = new Workbook(),
-    ws = sheet_from_array_of_arrays(data);
+      ws = sheet_from_array_of_arrays(data);
 
   if (merges.length > 0) {
     if (!ws['!merges']) ws['!merges'] = [];
@@ -388,7 +388,7 @@ function export_json_to_excel ({
 
   for (var i = 0; i < header.length; i++) {
     for (var j = 1; j <= multiHeader.length + 1; j++) {
-      // ws['A1'].s = 
+      // ws['A1'].s =
       ws[columnMap[i] + j].s = {
         font: {
           name: '宋体',
