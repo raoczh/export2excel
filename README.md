@@ -26,7 +26,8 @@ var tableData=[
 ]
 var callback = () =>{}
 
-window.export2Excel && window.export2Excel.export_json_to_excel({ fieldMap, sourceData: tableData, filename: '导出数据' }, callback)
+window.export2Excel && window.export2Excel.export_json_to_excel({ fieldMap, sourceData: tableData, 
+    filename: '导出数据', mergeColumns:['field1','field5']}, callback)
 ```
 
 
